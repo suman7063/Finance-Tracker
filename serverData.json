@@ -13,6 +13,20 @@
       "amount": 50,
       "category": "Food",
       "date": "2023-06-02"
+    },
+    {
+      "id": "d630",
+      "type": "expense",
+      "amount": 50,
+      "category": "cloth",
+      "date": "2024-07-02"
+    },
+    {
+      "id": "bc19",
+      "type": "expense",
+      "amount": 400,
+      "category": "bill",
+      "date": "2024-07-01"
     }
   ]
 }

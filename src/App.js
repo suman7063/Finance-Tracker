@@ -1,15 +1,16 @@
-import logo from './logo.svg';
-import { useEffect, useState } from "react";
-import './App.css';
-import AddTransaction from './component/AddTransaction';
+// src/App.js
+import React from 'react';
+import { TransactionsProvider } from './context/TransactionsContext';
 
-function App() {
+import Dashboard from './Dashboard';
 
+
+const App = () => {
   return (
-    <div className="App">
-      <AddTransaction />
-    </div>
+    <TransactionsProvider>
+      <Dashboard />
+    </TransactionsProvider>
   );
-}
+};
 
 export default App;

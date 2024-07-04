@@ -1,7 +1,7 @@
 // src/components/AddTransaction.js
 import React, { useState } from "react";
 import axios from "axios";
-import style from "./addTransaction.module.css";
+import style from "../styles/addTransaction.module.css";
 
 const AddTransaction = () => {
 
@@ -43,14 +43,14 @@ const AddTransaction = () => {
             <form className={style["form-wrap"]} onSubmit={handleSubmit}>
                 <h1>{formValue.type === "income" ? "Income" : "Expense"}</h1>
                 <div className={style["form-group"]}>
-                    <label for="first-name">Select Type(Income/Expenses)</label>
+                    <label htmlFor="type">Select Type(Income/Expenses)</label>
                     <select value={formValue.type} onChange={handleOnchange} name="type">
                         <option value="income">Income</option>
                         <option value="expense">Expense</option>
                     </select>
                 </div>
                 <div className={style["form-group"]}>
-                    <label for="first-name">Amount</label>
+                    <label htmlFor="amount">Amount</label>
                     <input
                         type="text"
                         name="amount"
@@ -60,7 +60,7 @@ const AddTransaction = () => {
                     />
                 </div>
                 <div className={style["form-group"]}>
-                    <label for="last-name">Category</label>
+                    <label htmlFor="category">Category</label>
                     <input
                         type="text"
                         name="category"
@@ -70,7 +70,7 @@ const AddTransaction = () => {
                     />
                 </div>
                 <div className={style["form-group"]}>
-                    <label for="email">Date</label>
+                    <label htmlFor="date">Date</label>
                     <input
                         type="date"
                         name="date"
