@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTransactions } from "../context/TransactionsContext";
-
+import style from "../styles/transactionList.module.css";
+import commonStyle from "../styles/common.module.css";
 const TransactionList = () => {
     const { state } = useTransactions();
     const { transactions } = state;
@@ -15,14 +16,30 @@ const TransactionList = () => {
     if (loading) return <div>Loading...</div>;
 
     return (
-        <ul>
-            {transactions.map((transaction) => (
-                <li key={transaction.id}>
-                    {transaction.type} - {transaction.amount} - {transaction.category} -{" "}
-                    {transaction.date}
-                </li>
-            ))}
-        </ul>
+        <div className={commonStyle["main-container"]}>
+            <div className={style["table-container"]}>
+                <table className={style["transaction-table"]}>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {transactions.map(transaction => (
+                            <tr key={transaction.id}>
+                                <td>{transaction.type}</td>
+                                <td>{transaction.amount}</td>
+                                <td>{transaction.category}</td>
+                                <td>{transaction.date}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     );
 };
 

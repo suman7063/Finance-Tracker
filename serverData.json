@@ -27,6 +27,48 @@
       "amount": 400,
       "category": "bill",
       "date": "2024-07-01"
+    },
+    {
+      "id": "ef93",
+      "type": "expense",
+      "amount": 900,
+      "category": "gas",
+      "date": "2024-07-02"
+    },
+    {
+      "id": "21cb",
+      "type": "income",
+      "amount": 700,
+      "category": "freelancing",
+      "date": "2024-06-07"
+    },
+    {
+      "id": "cfd1",
+      "type": "expense",
+      "amount": 800,
+      "category": "tea",
+      "date": "2024-07-02"
+    },
+    {
+      "id": "2dc3",
+      "type": "expense",
+      "amount": 50,
+      "category": "jhjhh",
+      "date": "2024-07-03"
+    },
+    {
+      "id": "27b6",
+      "type": "income",
+      "amount": 700,
+      "category": "freelancing",
+      "date": "2024-07-03"
+    },
+    {
+      "id": "32e1",
+      "type": "expense",
+      "amount": 0.1,
+      "category": "jhjhh",
+      "date": "2024-07-16"
     }
   ]
 }

@@ -1,5 +1,10 @@
+// src/components/Summary.js
 import React, { useState, useEffect } from "react";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { useTransactions } from "../context/TransactionsContext";
+import commonStyle from "../styles/common.module.css";
+
+const COLORS = ["#82ca9d", "#8884d8"]; // Colors for income and expense slices
 
 const Summary = () => {
     const { state } = useTransactions();
@@ -20,18 +25,44 @@ const Summary = () => {
         }
     }, [transactions]);
 
+    // Data for pie chart
+    const data = [
+        { name: "Income", value: income },
+        { name: "Expenses", value: expenses }
+    ];
+
     return (
-        <>
+        <div className={commonStyle["main-container"]}>
             {loading ? (
-                "loding"
+                "Loading..."
             ) : (
                 <>
-                    <h2>Summary</h2> <p>Total Income: ${income.toFixed(2)}</p>
-                    <p>Total Expenses: ${expenses.toFixed(2)}</p>
-                    <p>Balance: ${balance.toFixed(2)}</p>
+                    <p className={commonStyle["subTitle"]}>Total Income: <span>{income.toFixed(2)}</span></p>
+                    <p className={commonStyle["subTitle"]}>Total Expenses: <span>{expenses.toFixed(2)}</span> </p>
+                    <p className={commonStyle["subTitle"]}>Balance:  <span>{balance.toFixed(2)}</span></p>
+                    <ResponsiveContainer width="100%" height={400} >
+                        <PieChart width={400} height={400}>
+                            <Pie
+                                data={data}
+                                dataKey="value"
+                                nameKey="name"
+                                cx="50%"
+                                cy="50%"
+                                outerRadius={150}
+                                fill="#8884d8"
+                            >
+                                {data.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS[index]} />
+                                ))}
+                            </Pie>
+                            <Tooltip />
+                        </PieChart>
+                    </ResponsiveContainer>
+
                 </>
-            )}
-        </>
+            )
+            }
+        </div >
     );
 };
 

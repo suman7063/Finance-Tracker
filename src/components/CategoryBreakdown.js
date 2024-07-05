@@ -1,24 +1,32 @@
-// src/components/CategoryBreakdown.js
 import React, { useEffect, useState } from "react";
-import { PieChart, Pie, Cell, Tooltip } from "recharts";
+import {
+    BarChart,
+    Bar,
+    XAxis,
+    YAxis,
+    Legend,
+    ResponsiveContainer,
+    Tooltip,
+} from "recharts";
 import { useTransactions } from "../context/TransactionsContext";
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-
+import commonStyle from "../styles/common.module.css";
 const CategoryBreakdown = () => {
     const { state } = useTransactions();
     const { transactions } = state;
     const [loading, setLoading] = useState(true);
-    const data = transactions
-        .filter((transaction) => transaction.type === "expense")
-        .reduce((acc, transaction) => {
-            const category = acc.find((item) => item.name === transaction.category);
-            if (category) {
-                category.value += transaction.amount;
-            } else {
-                acc.push({ name: transaction.category, value: transaction.amount });
-            }
-            return acc;
-        }, []);
+    const data = transactions.reduce((acc, transaction) => {
+        const category = acc.find((item) => item.category === transaction.category);
+        if (category) {
+            category[transaction.type] += transaction.amount;
+        } else {
+            acc.push({
+                category: transaction.category,
+                income: transaction.type === "income" ? transaction.amount : 0,
+                expense: transaction.type === "expense" ? transaction.amount : 0,
+            });
+        }
+        return acc;
+    }, []);
     useEffect(() => {
         if (transactions) {
             setLoading(false);
@@ -26,25 +34,25 @@ const CategoryBreakdown = () => {
     }, [transactions]);
 
     return (
-        <>
-            <h2>Category Breakdown</h2>
-            <PieChart width={400} height={400}>
-                <Pie
-                    data={data}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={150}
-                    fill="#8884d8"
-                >
-                    {data.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                </Pie>
-                <Tooltip />
-            </PieChart>
-        </>
+        <div className={commonStyle["main-container"]}>
+            {loading ? (
+                <>loding...</>
+            ) : (
+                <ResponsiveContainer width="100%" height={400} >
+                    <BarChart
+                        data={data}
+                        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                    >
+                        <XAxis dataKey="category" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="income" fill="#82ca9d" />
+                        <Bar dataKey="expense" fill="#8884d8" />
+                    </BarChart>
+                </ResponsiveContainer>
+            )}
+        </div>
     );
 };
 

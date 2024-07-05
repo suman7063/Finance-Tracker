@@ -1,17 +1,8 @@
-.container {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  background-color: #e8e8fd;
-}
-
 .form-wrap {
   width: 520px;
   background-color: #fff;
   border-radius: 5px;
   text-align: left;
-  /* border: 1px solid #37a08e; */
   padding: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08235294117647059);
 }
@@ -68,4 +59,11 @@
 
 .form-wrap .bottom-text {
   font-size: 12px;
+}
+
+@media only screen and (max-width: 600px) {
+  .form-wrap {
+    width: 90%;
+    padding: 8px;
+  }
 }
