@@ -69,6 +69,13 @@
       "amount": 0.1,
       "category": "jhjhh",
       "date": "2024-07-16"
+    },
+    {
+      "id": "27ad",
+      "type": "expense",
+      "amount": 1000,
+      "category": "cloth",
+      "date": "2024-07-02"
     }
   ]
 }

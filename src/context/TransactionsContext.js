@@ -6,9 +6,12 @@ const TransactionsContext = createContext();
 const transactionsReducer = (state, action) => {
     switch (action.type) {
         case 'SET_TRANSACTIONS':
-            return { ...state, transactions: action.payload };
+            return { ...state, transactions: action.payload, filteredTransactions: action.payload };
         case 'ADD_TRANSACTION':
-            return { ...state, transactions: [...state.transactions, action.payload] };
+            const updatedTransactions = [...state.transactions, action.payload];
+            return { ...state, transactions: updatedTransactions, filteredTransactions: updatedTransactions };
+        case 'SET_FILTERED_TRANSACTIONS':
+            return { ...state, filteredTransactions: action.payload };
         default:
             return state;
     }

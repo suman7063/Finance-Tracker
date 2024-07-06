@@ -13,6 +13,7 @@ const Dashboard = () => {
             <div label="Transaction List">
                 <TransactionList />
             </div>
+
             <div label="Summary">
                 <Summary />
             </div>

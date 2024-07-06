@@ -58,7 +58,7 @@ const AddTransaction = () => {
                     type="text"
                     name="amount"
                     id="amount"
-                    onChange={handleOnchange} v
+                    onChange={handleOnchange}
                     value={formValue.amount}
                 />
             </div>
@@ -83,7 +83,7 @@ const AddTransaction = () => {
                 />
             </div>
 
-            <button type="submit" className={style["btn"]}>
+            <button type="submit">
                 {formValue.type === "income" ? "Add Income" : "Add Expense"}
             </button>
         </form>
