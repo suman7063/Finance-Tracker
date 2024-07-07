@@ -5,7 +5,7 @@ function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/posts')
+    axios.get('/api/transactions')
       .then(response => {
         setData(response.data);
       })
