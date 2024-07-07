@@ -22,7 +22,7 @@ export const TransactionsProvider = ({ children }) => {
 
     const fetchTransactions = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/transactions');
+            const response = await axios.get('https://json-server-deployment-xfbx.onrender.com/transactions');
             dispatch({ type: 'SET_TRANSACTIONS', payload: response.data });
         } catch (error) {
             console.error("Error fetching transactions:", error);

@@ -1,29 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+// src/App.js
+import React from 'react';
+import { TransactionsProvider } from './context/TransactionsContext';
 
-function App() {
-  const [data, setData] = useState([]);
+import Dashboard from './Dashboard';
 
-  useEffect(() => {
-    axios.get('/api/transactions')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
 
+const App = () => {
   return (
-    <div className="App">
-      <h1>Posts</h1>
-      <ul>
-        {data.map(post => (
-          <li key={post.id}>{post.title}</li>
-        ))}
-      </ul>
-    </div>
+    <TransactionsProvider>
+      <Dashboard />
+    </TransactionsProvider>
   );
-}
+};
 
 export default App;

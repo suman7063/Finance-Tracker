@@ -28,7 +28,7 @@ const AddTransaction = () => {
         };
 
         try {
-            const response = await axios.post("http://localhost:5000/transactions", newTransaction);
+            const response = await axios.post("https://json-server-deployment-xfbx.onrender.com/transactions", newTransaction);
             alert("Transaction added successfully!");
             dispatch({ type: 'ADD_TRANSACTION', payload: response.data });
             setFormValue({ type: "", amount: 0, category: "", date: "" });
