@@ -19,8 +19,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server --watch serverData.json --port 5000"
-  },
+    "server": "json-server --watch db.json --port 5000",
+    "build:lambda": "netlify-lambda build netlify/functions"
+  },  
   "eslintConfig": {
     "extends": [
       "react-app",
