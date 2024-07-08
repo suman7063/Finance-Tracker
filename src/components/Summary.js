@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { useTransactions } from "../context/TransactionsContext";
 import commonStyle from "../styles/common.module.css";
+import Loader from "./Loader";
 
 const COLORS = ["#82ca9d", "#8884d8"]; // Colors for income and expense slices
 
@@ -34,7 +35,7 @@ const Summary = () => {
     return (
         <div className={commonStyle["main-container"]}>
             {loading ? (
-                "Loading..."
+                <Loader />
             ) : (
                 <>
                     <p className={commonStyle["subTitle"]}>Total Income: <span>{income.toFixed(2)}</span></p>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useTransactions } from "../context/TransactionsContext";
 import style from "../styles/transactionList.module.css";
 import commonStyle from "../styles/common.module.css";
+import Loader from "./Loader";
 const TransactionList = () => {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
@@ -22,7 +23,8 @@ const TransactionList = () => {
         }
     }, [transactions]);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading || filteredTransactions === undefined) return <Loader />;
+    console.log(filteredTransactions, "sakdk")
     return (
         <div className={commonStyle["main-container"]}>
             <div className={style['filter-container']}>

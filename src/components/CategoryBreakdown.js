@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import { useTransactions } from "../context/TransactionsContext";
 import commonStyle from "../styles/common.module.css";
+import Loader from "./Loader";
 const CategoryBreakdown = () => {
     const { state } = useTransactions();
     const { transactions } = state;
@@ -36,7 +37,7 @@ const CategoryBreakdown = () => {
     return (
         <div className={commonStyle["main-container"]}>
             {loading ? (
-                <>loding...</>
+                <Loader />
             ) : (
                 <ResponsiveContainer width="100%" height={400} >
                     <BarChart
